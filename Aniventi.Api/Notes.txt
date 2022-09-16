@@ -1,3 +1,4 @@
 ﻿* auto mapper
 * fluent validation
+* fluent api
 * jwt

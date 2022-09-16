@@ -12,6 +12,7 @@ namespace Aniventi.BLL.Services.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         public ICategoryRepository CategoryRepository { get; private set; }
+        public IProductRepository ProductRepository { get; private set; }
 
 
         private AniventiECommerceContext _aniventiECommerceContext;
@@ -21,6 +22,7 @@ namespace Aniventi.BLL.Services.UnitOfWork
             _aniventiECommerceContext = aniventiECommerceContext;
 
             CategoryRepository = new CategoryRepository(_aniventiECommerceContext);
+            ProductRepository = new ProductRepository(_aniventiECommerceContext);
         }
 
 
