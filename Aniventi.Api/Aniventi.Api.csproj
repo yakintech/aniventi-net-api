@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Aniventi.BLL\Aniventi.BLL.csproj" />
     <ProjectReference Include="..\Aniventi.DAL\Aniventi.DAL.csproj" />
+    <ProjectReference Include="..\Aniventi.Dto\Aniventi.Dto.csproj" />
   </ItemGroup>
 
 </Project>

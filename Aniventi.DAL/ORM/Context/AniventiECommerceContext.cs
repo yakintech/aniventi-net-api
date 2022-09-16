@@ -11,6 +11,11 @@ namespace Aniventi.DAL.ORM.Context
     public class AniventiECommerceContext : DbContext
     {
 
+        public AniventiECommerceContext(DbContextOptions<AniventiECommerceContext> options) : base(options)
+        {
+
+        }
+
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS; Database=AniventiECommerceDb;Trusted_Connection=true");

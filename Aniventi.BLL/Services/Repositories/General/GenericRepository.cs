@@ -71,5 +71,11 @@ namespace Aniventi.BLL.Services.Repositories.General
             var entity = dbSet.Where(q => q.IsDeleted == false).FirstOrDefault(filter);
             return entity;
         }
+
+        public void Update(T entity)
+        {
+            dbSet.Attach(entity);
+            context.Entry(entity).State = EntityState.Modified;
+        }
     }
 }

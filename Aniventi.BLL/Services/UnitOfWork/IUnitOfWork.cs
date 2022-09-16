@@ -10,5 +10,7 @@ namespace Aniventi.BLL.Services.UnitOfWork
     public interface IUnitOfWork
     {
         ICategoryRepository CategoryRepository { get; }
+
+        void Commit();
     }
 }

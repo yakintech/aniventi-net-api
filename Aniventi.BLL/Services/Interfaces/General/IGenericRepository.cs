@@ -27,6 +27,8 @@ namespace Aniventi.BLL.Repositories.Interfaces
 
         T GetByQuery(Expression<Func<T, bool>> filter);
 
+        void Update(T entity);
+
 
     }
 }
