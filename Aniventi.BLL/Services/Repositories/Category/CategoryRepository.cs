@@ -1,7 +1,7 @@
 ﻿using Aniventi.BLL.Services.Interfaces;
 using Aniventi.BLL.Services.Repositories.General;
 using Aniventi.DAL.ORM.Context;
-using Aniventi.DAL.ORM.Entity.Category;
+using Aniventi.DAL.ORM.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

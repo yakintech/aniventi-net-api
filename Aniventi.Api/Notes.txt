@@ -2,3 +2,8 @@
 * fluent validation
 * fluent api
 * jwt
+
+
+
+
+update-database -migration productTableNamecolumnUpdated

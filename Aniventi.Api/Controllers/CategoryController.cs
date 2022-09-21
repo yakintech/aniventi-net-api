@@ -1,6 +1,6 @@
 ﻿using Aniventi.BLL.Services.Repositories.General;
 using Aniventi.BLL.Services.UnitOfWork;
-using Aniventi.DAL.ORM.Entity.Category;
+using Aniventi.DAL.ORM.Entity;
 using Aniventi.Dto.Models.Category;
 using Microsoft.AspNetCore.Mvc;
 
@@ -76,6 +76,7 @@ namespace Aniventi.Api.Controllers
             return Ok(model);
 
         }
+
 
 
         [HttpDelete]

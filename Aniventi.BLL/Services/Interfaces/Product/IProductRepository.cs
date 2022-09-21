@@ -1,5 +1,5 @@
 ﻿using Aniventi.BLL.Repositories.Interfaces;
-using Aniventi.DAL.ORM.Entity.Product;
+using Aniventi.DAL.ORM.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

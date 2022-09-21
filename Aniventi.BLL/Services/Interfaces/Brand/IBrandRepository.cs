@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace Aniventi.BLL.Services.Interfaces
 {
-    public interface ICategoryRepository : IGenericRepository<Category>
+    public interface IBrandRepository : IGenericRepository<Brand>
     {
-     
     }
 }

@@ -4,6 +4,7 @@ using Aniventi.DAL.ORM.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aniventi.DAL.Migrations
 {
     [DbContext(typeof(AniventiECommerceContext))]
-    partial class AniventiECommerceContextModelSnapshot : ModelSnapshot
+    [Migration("20220921085637_brandTableCreated")]
+    partial class brandTableCreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,9 +63,6 @@ namespace Aniventi.DAL.Migrations
                     b.Property<DateTime>("AddDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("BrandId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
@@ -85,8 +84,6 @@ namespace Aniventi.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BrandId");
 
                     b.ToTable("Categories");
                 });
@@ -132,17 +129,6 @@ namespace Aniventi.DAL.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("Aniventi.DAL.ORM.Entity.Category", b =>
-                {
-                    b.HasOne("Aniventi.DAL.ORM.Entity.Brand", "Brand")
-                        .WithMany()
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Brand");
                 });
 
             modelBuilder.Entity("Aniventi.DAL.ORM.Entity.Product", b =>

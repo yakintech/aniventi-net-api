@@ -77,5 +77,16 @@ namespace Aniventi.BLL.Services.Repositories.General
             dbSet.Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
         }
+
+        public IQueryable<T> GetAllWithQueryable()
+        {
+            return dbSet.Where(x => x.IsDeleted == false).OrderByDescending(x => x.AddDate);
+        }
+
+        public IQueryable<T> GetQueryableListByQueries(Expression<Func<T, bool>> filter)
+        {
+            return dbSet.Where(x => x.IsDeleted == false).Where(filter).OrderByDescending(x => x.AddDate);
+
+        }
     }
 }

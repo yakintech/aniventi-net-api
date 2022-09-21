@@ -13,6 +13,8 @@ namespace Aniventi.BLL.Repositories.Interfaces
 
         //Senkron ve asenkton repo metotlarım
 
+        IQueryable<T> GetAllWithQueryable();
+
         List<T> GetAll();
 
         T GetById(Guid id);
@@ -24,6 +26,8 @@ namespace Aniventi.BLL.Repositories.Interfaces
         void HardDelete(T entity);
 
         List<T> GetListByQueries(Expression<Func<T, bool>> filter);
+
+        IQueryable<T> GetQueryableListByQueries(Expression<Func<T, bool>> filter);
 
         T GetByQuery(Expression<Func<T, bool>> filter);
 

@@ -4,6 +4,7 @@ using Aniventi.DAL.ORM.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aniventi.DAL.Migrations
 {
     [DbContext(typeof(AniventiECommerceContext))]
-    partial class AniventiECommerceContextModelSnapshot : ModelSnapshot
+    [Migration("20220921085714_brandTableRelation")]
+    partial class brandTableRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
