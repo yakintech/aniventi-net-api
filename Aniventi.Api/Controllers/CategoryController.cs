@@ -2,10 +2,12 @@
 using Aniventi.BLL.Services.UnitOfWork;
 using Aniventi.DAL.ORM.Entity;
 using Aniventi.Dto.Models.Category;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aniventi.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/category")]
     public class CategoryController : ControllerBase

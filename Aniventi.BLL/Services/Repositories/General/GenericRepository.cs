@@ -88,5 +88,10 @@ namespace Aniventi.BLL.Services.Repositories.General
             return dbSet.Where(x => x.IsDeleted == false).Where(filter).OrderByDescending(x => x.AddDate);
 
         }
+
+        public bool Any(Expression<Func<T, bool>> filter)
+        {
+            return dbSet.Where(x => x.IsDeleted == false).Any(filter);
+        }
     }
 }

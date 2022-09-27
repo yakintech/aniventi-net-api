@@ -11,6 +11,7 @@ namespace Aniventi.BLL.Services.UnitOfWork
     {
         ICategoryRepository CategoryRepository { get; }
         IProductRepository ProductRepository { get; }
+        IUserRepository UserRepository { get; }
 
         void Commit();
     }

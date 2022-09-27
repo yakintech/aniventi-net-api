@@ -25,6 +25,8 @@ namespace Aniventi.BLL.Repositories.Interfaces
 
         void HardDelete(T entity);
 
+        bool Any(Expression<Func<T, bool>> filter);
+
         List<T> GetListByQueries(Expression<Func<T, bool>> filter);
 
         IQueryable<T> GetQueryableListByQueries(Expression<Func<T, bool>> filter);
