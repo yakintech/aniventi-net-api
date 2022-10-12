@@ -1,3 +1,4 @@
+using Aniventi.Api.Models.Exceptions;
 using Aniventi.BLL.Services.UnitOfWork;
 using Aniventi.DAL.ORM.Context;
 using Aniventi.Dto.Models.Category;
@@ -13,8 +14,9 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(options => options.Filters.Add(typeof(ExceptionFilter)))
     .AddFluentValidation();
+
 
 builder.Services.AddScoped<IValidator<CreateCategoryDto>, CreateCategoryDtoValidator>();
 builder.Services.AddScoped<IValidator<DeleteCategoryDto>, DeleteCategoryDtoValidator>();
@@ -30,6 +32,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("aEySwcUDaEySwcUD"))
     };
 });
+
+
+
 
 builder.Services.AddSwaggerGen(options =>
 {
