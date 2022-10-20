@@ -18,6 +18,7 @@ builder.Services.AddControllers(options => options.Filters.Add(typeof(ExceptionF
     .AddFluentValidation();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddMemoryCache();
 
 
 builder.Services.AddScoped<IValidator<CreateCategoryDto>, CreateCategoryDtoValidator>();

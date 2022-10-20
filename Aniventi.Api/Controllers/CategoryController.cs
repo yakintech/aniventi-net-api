@@ -5,6 +5,7 @@ using Aniventi.Dto.Models.Category;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Aniventi.Api.Controllers
 {
@@ -16,17 +17,25 @@ namespace Aniventi.Api.Controllers
 
         private IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private IMemoryCache _memoryCache;
 
-        public CategoryController(IUnitOfWork unitOfWork, IMapper mapper)
+        public CategoryController(IUnitOfWork unitOfWork, IMapper mapper, IMemoryCache memoryCache)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _memoryCache = memoryCache;
         }
 
 
         [HttpGet]
         public IActionResult GetCategories()
         {
+            string key = "categoryList";
+
+            if (_memoryCache.TryGetValue(key, out object list))
+                return Ok(list);
+
+
             var categories = _unitOfWork.CategoryRepository.GetAll();
 
             //List<CategoryListDto> model = categories.Select(x => new CategoryListDto()
@@ -40,8 +49,24 @@ namespace Aniventi.Api.Controllers
 
             var model = _mapper.Map<List<CategoryListDto>>(categories);
 
+            _memoryCache.Set(key, model, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpiration = DateTime.Now.AddMinutes(20),
+                Priority = CacheItemPriority.Normal
+            });
+
             return Ok(model);
         }
+
+
+        [HttpGet]
+        [Route("deletecache")]
+        public IActionResult DeleteCache()
+        {
+            _memoryCache.Remove("categoryList");
+            return Ok();
+        }
+
 
         [HttpGet]
         [Route("single")]
