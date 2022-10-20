@@ -17,6 +17,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(options => options.Filters.Add(typeof(ExceptionFilter)))
     .AddFluentValidation();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 
 builder.Services.AddScoped<IValidator<CreateCategoryDto>, CreateCategoryDtoValidator>();
 builder.Services.AddScoped<IValidator<DeleteCategoryDto>, DeleteCategoryDtoValidator>();

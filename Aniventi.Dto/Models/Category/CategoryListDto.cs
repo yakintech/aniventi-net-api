@@ -14,5 +14,9 @@ namespace Aniventi.Dto.Models.Category
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public Guid Bid { get; set; }
+
+        public DateTime StatusDate { get; set; }
     }
 }

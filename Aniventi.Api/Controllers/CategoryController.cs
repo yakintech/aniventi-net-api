@@ -2,23 +2,25 @@
 using Aniventi.BLL.Services.UnitOfWork;
 using Aniventi.DAL.ORM.Entity;
 using Aniventi.Dto.Models.Category;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aniventi.Api.Controllers
 {
-    [Authorize]
+   // [Authorize]
     [ApiController]
     [Route("api/category")]
     public class CategoryController : ControllerBase
     {
 
         private IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-
-        public CategoryController(IUnitOfWork unitOfWork)
+        public CategoryController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
 
@@ -27,14 +29,16 @@ namespace Aniventi.Api.Controllers
         {
             var categories = _unitOfWork.CategoryRepository.GetAll();
 
-            List<CategoryListDto> model = categories.Select(x => new CategoryListDto()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Description = x.Description,
-                AddDate = x.AddDate,
-                SortNumber = x.SortNumber
-            }).ToList();
+            //List<CategoryListDto> model = categories.Select(x => new CategoryListDto()
+            //{
+            //    Id = x.Id,
+            //    Name = x.Name,
+            //    Description = x.Description,
+            //    AddDate = x.AddDate,
+            //    SortNumber = x.SortNumber
+            //}).ToList();
+
+            var model = _mapper.Map<List<CategoryListDto>>(categories);
 
             return Ok(model);
         }
